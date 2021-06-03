@@ -11,7 +11,6 @@ var lastreqdone = 1;
 var timeout;
 
 function refreshinputs() {
-<<<<<<< HEAD
 	$.getJSON({
 		url: "/allstats",
 		timeout: 500,
@@ -43,17 +42,6 @@ function refreshinputs() {
 			$("#inputTimerOffSu").val(resp.TimerOffSu);
 		},
 	});
-=======
-  $.getJSON({
-    url: "/allstats",
-    timeout: 500,
-    success: function ( resp ) {
-      $("#inputSetTemp").val( resp.settemp );
-      $("#inputSleep").val( resp.sleep_time );
-      $("#inputWake").val( resp.wake_time );
-    }
-  });
->>>>>>> 1df4d8abf4e543689dd5bbe43b316d0c219e6ae0
 }
 
 function resettimer() {
@@ -103,7 +91,6 @@ $(document).ready(function () {
 
 	refreshinputs();
 
-<<<<<<< HEAD
 	$("#inputSetTemp").change(function () {
 		$.post("/settemp", { settemp: $("#inputSetTemp").val() });
 	});
@@ -111,41 +98,6 @@ $(document).ready(function () {
 	$("#inputSetSteamTemp").change(function () {
 		$.post("/setsteamtemp", { steamtemp: $("#inputSetSteamTemp").val() });
 	});
-=======
-  $("#inputSleep").change(function(){
-    $.post(
-      "/setsleep",
-      { sleep: $("#inputSleep").val() }
-    );
-  });
-
-  $("#inputWake").change(function(){
-    $.post(
-      "/setwake",
-      { wake: $("#inputWake").val() }
-    );
-  });
-
-  $("#btnTimerDisable").click(function(){
-    $.post("/scheduler",{ scheduler: "False" });
-    $("#inputWake").hide();
-    $("#labelWake").hide();
-    $("#inputSleep").hide();
-    $("#labelSleep").hide();
-    $("#btnTimerDisable").hide();
-    $("#btnTimerEnable").show();
-  });
-
-  $("#btnTimerEnable").click(function(){
-    $.post("/scheduler",{ scheduler: "True" });
-    $("#inputWake").show();
-    $("#labelWake").show();
-    $("#inputSleep").show();
-    $("#labelSleep").show();
-    $("#btnTimerDisable").show();
-    $("#btnTimerEnable").hide();
-  });
->>>>>>> 1df4d8abf4e543689dd5bbe43b316d0c219e6ae0
 
 	$("#btnSnooze").click(function () {
 		$.post("/snooze", { snooze: $("#inputSnooze").val() });
@@ -217,7 +169,6 @@ $(document).ready(function () {
 	});
 });
 
-<<<<<<< HEAD
 setInterval(function () {
 	if (lastreqdone == 1) {
 		$.getJSON({
@@ -263,49 +214,6 @@ setInterval(function () {
 
 		lastreqdone = 0;
 	}
-=======
-setInterval(function() {
-  if (lastreqdone == 1) {
-    $.getJSON({
-      url: "/allstats",
-      timeout: 500,
-      success: function ( resp ) {
-        if (resp.sched_enabled == true) {
-         $("#inputWake").show();
-         $("#inputSleep").show();
-         $("#btnTimerSet").show();
-         $("#btnTimerDisable").show();
-         $("#btnTimerEnable").hide();
-        } else {
-         $("#inputWake").hide();
-         $("#inputSleep").hide();
-         $("#btnTimerSet").hide();
-         $("#btnTimerDisable").hide();
-         $("#btnTimerEnable").show();
-        }
-        curtemp.append(new Date().getTime(), resp.tempf);
-        settemp.append(new Date().getTime(), resp.settemp);
-        settempm.append(new Date().getTime(), resp.settemp-4);
-        settempp.append(new Date().getTime(), resp.settemp+4);
-        pterm.append(new Date().getTime(), resp.pterm);
-        iterm.append(new Date().getTime(), resp.iterm);
-        dterm.append(new Date().getTime(), resp.dterm);
-        pidval.append(new Date().getTime(), resp.pidval);
-        avgpid.append(new Date().getTime(), resp.avgpid);
-        $("#curtemp").html(resp.tempf.toFixed(2));
-        $("#pterm").html(resp.pterm.toFixed(2));
-        $("#iterm").html(resp.iterm.toFixed(2));
-        $("#dterm").html(resp.dterm.toFixed(2));
-        $("#pidval").html(resp.pidval.toFixed(2));
-        $("#avgpid").html(resp.avgpid.toFixed(2));
-      },
-      complete: function () {
-        lastreqdone = 1;
-      }
-    });
-    lastreqdone = 0;
-  }
->>>>>>> 1df4d8abf4e543689dd5bbe43b316d0c219e6ae0
 }, 100);
 
 function createTimeline() {
