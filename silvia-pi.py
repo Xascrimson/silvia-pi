@@ -1,5 +1,4 @@
-#!/usr/bin/python
-import csv 
+#!/usr/bin/python 
 
 def he_control_loop(dummy, state,timeState):
     from time import sleep
@@ -220,7 +219,6 @@ if __name__ == '__main__':
     import config as conf
     import timer
     from restServer import rest_server
-    from datetime import datetime
 
     manager = Manager()
     pidstate = manager.dict()
@@ -285,10 +283,10 @@ if __name__ == '__main__':
 
         if piderr > 9:
             print ('ERROR IN PID THREAD, RESTARTING')
-            with open("FailedPIDcsv.csv","a+") as tempFile:
-                fieldNames = ["time"]
-                writer = csv.DictWriter(tempFile,fieldnames=fieldNames)
-                writer.writerow({"time": datetime.now()})
+            # with open("FailedPIDcsv.csv","a+") as tempFile:
+            #     fieldNames = ["time"]
+            #     writer = csv.DictWriter(tempFile,fieldnames=fieldNames)
+            #     writer.writerow({"time": datetime.now()})
         
             # p.terminate()
 
@@ -305,10 +303,10 @@ if __name__ == '__main__':
 
         if weberr > 9:
             print ('ERROR IN WEB SERVER THREAD, RESTARTING')
-            with open("FailedWEBcsv.csv","a+") as tempFile:
-                fieldNames = ["time"]
-                writer = csv.DictWriter(tempFile,fieldnames=fieldNames)
-                writer.writerow({"time": datetime.now()})
+            # with open("FailedWEBcsv.csv","a+") as tempFile:
+            #     fieldNames = ["time"]
+            #     writer = csv.DictWriter(tempFile,fieldnames=fieldNames)
+            #     writer.writerow({"time": datetime.now()})
             # r.terminate()
 
         weberrflag = 0
