@@ -113,8 +113,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnMo,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnMo'] = TimerOnMo
         return str(TimerOnMo)
 
@@ -124,8 +123,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnTu,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnTu'] = TimerOnTu
         return str(TimerOnTu)
 
@@ -135,8 +133,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnWe,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnWe'] = TimerOnWe
         return str(TimerOnWe)
 
@@ -146,8 +143,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnTh,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnTh'] = TimerOnTh
         return str(TimerOnTh)
 
@@ -157,8 +153,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnFr,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnFr'] = TimerOnFr
         return str(TimerOnFr)
 
@@ -168,8 +163,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnSa,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnSa'] = TimerOnSa
         return str(TimerOnSa)
 
@@ -179,8 +173,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOnSu,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOnSu'] = TimerOnSu
         return str(TimerOnSu)
 
@@ -190,8 +183,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffMo,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffMo'] = TimerOffMo
         return str(TimerOffMo)
 
@@ -201,8 +193,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffTu,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffTu'] = TimerOffTu
         return str(TimerOffTu)
 
@@ -212,8 +203,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffWe,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffWe'] = TimerOffWe
         return str(TimerOffWe)
 
@@ -223,8 +213,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffTh,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffTh'] = TimerOffTh
         return str(TimerOffTh)
 
@@ -234,8 +223,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffFr,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffFr'] = TimerOffFr
         return str(TimerOffFr)
 
@@ -245,8 +233,7 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffSa,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffSa'] = TimerOffSa
         return str(TimerOffSa)
 
@@ -256,10 +243,9 @@ def rest_server(dummy, state,timeState):
         try:
             datetime.strptime(TimerOffSu,'%H:%M')
         except:
-            pass
-    #       abort(400,'Invalid time format.')
+            abort(400,'Invalid time format.')
         timeState['TimerOffSu'] = TimerOffSu
         return str(TimerOffSu)
 
 
-    run(host='0.0.0.0', port=conf.port, server='auto')
+    run(host='0.0.0.0', port=conf.port, server='cherrypy')

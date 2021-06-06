@@ -46,7 +46,7 @@ low_temp_b = 85
 high_temp_b = 110
 
 low_temp_s = 130
-high_temp_s = 160
+high_temp_s = 155
 
 # Main loop sample rate in seconds
 sample_time = 0.1
