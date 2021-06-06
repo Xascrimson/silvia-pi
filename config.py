@@ -25,7 +25,6 @@ snooze = '07:00'
 
 #circuit breaker time in minutes convert to seconds
 circuitBreakerTime = 20 * 60
-
 TimerOnMo = '08:40'
 TimerOffMo = '10:00'
 TimerOnTu = '08:40'
@@ -69,4 +68,4 @@ Dw = Dc
 # Dw = 0#40.0
 
 #Web/REST Server Options
-port = 8080
+port = 80
