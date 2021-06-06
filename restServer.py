@@ -248,4 +248,4 @@ def rest_server(dummy, state,timeState):
         return str(TimerOffSu)
 
 
-    run(host='0.0.0.0', port=conf.port, server='paste')
+    run(host='0.0.0.0', port=conf.port, server='waitress')
