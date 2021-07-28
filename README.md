@@ -1,7 +1,7 @@
 # silvia-pi
 A Raspberry Pi modification to the Rancilio Silvia Espresso Machine implementing PID temperature control.
 
-#Medium article for walkthrough
+# Medium article for walkthrough
 https://medium.com/@dannyhuang_10997/rancilio-silvia-pid-mpc-via-raspberry-pi-901a14fe5681
 
 #### Currently Implemented Features:
