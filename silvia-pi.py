@@ -174,6 +174,7 @@ def pid_loop(dummy, state):
             if i % 10 == 0:
                 pid.update(avgtemp)
                 pidout = pid.output
+                print('i',i,'pidout',pidout)
                 pidhist[i/10 % 10] = pidout
                 avgpid = sum(pidhist)/len(pidhist)
 
