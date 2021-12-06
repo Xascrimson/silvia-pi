@@ -57,7 +57,7 @@ def pid_loop(dummy, state):
     from time import sleep, time
     from math import isnan
     import Adafruit_GPIO.SPI as SPI
-    import adafruit-circuitpython-max31855 as MAX31855
+    import Adafruit_MAX31855.MAX31855 as MAX31855
     import PID as PID
     import config as conf
     from datetime import datetime
