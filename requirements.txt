@@ -1,4 +1,3 @@
 bottle
 cheroot
 RPi.GPIO
-spidev
