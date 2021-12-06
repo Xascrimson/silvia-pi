@@ -31,6 +31,7 @@ cp ~/ivPID/PID.py ~/silvia-pi/
 
 echo "Installing remaining python libraries..."
 pip install --upgrade -r $BASEDIR/requirements.txt
+pip3 install spidev==3.4 --force-reinstall
 
 if ! grep silvia-pi.py /etc/rc.local; then
   echo "Adding entry to /etc/rc.local"
