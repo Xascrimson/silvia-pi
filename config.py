@@ -35,9 +35,9 @@ TimerOnTh = '08:10'
 TimerOffTh = '10:10'
 TimerOnFr = '08:10'
 TimerOffFr = '10:10'
-TimerOnSa = '10:30'
+TimerOnSa = '9:30'
 TimerOffSa = '11:30'
-TimerOnSu = '10:30'
+TimerOnSu = '9:30'
 TimerOffSu = '11:30'
 
 
