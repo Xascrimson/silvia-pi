@@ -2,6 +2,7 @@
 Please use python3 version Python 3.7.3. The latest raspberry pi will be 3.11.x which is incompatiable.
 
 use 2020-02-13-raspbian-buster.zip, do not use the newest raspberry pi as the python is wrong.
+https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/
 
 MAX31855PMB1 pins as follows.
 connect SS(chip enable) on GPIO 8 of the pi
