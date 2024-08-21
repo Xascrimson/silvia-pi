@@ -1,3 +1,6 @@
+# notes
+Please use python3 version Python 3.7.3. The latest raspberry pi will be 3.11.x which is incompatiable
+
 # silvia-pi
 A Raspberry Pi modification to the Rancilio Silvia Espresso Machine implementing PID temperature control.
 
