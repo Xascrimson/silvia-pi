@@ -215,7 +215,7 @@ def pid_loop(dummy, state):
 if __name__ == '__main__':
     from multiprocessing import Process, Manager
     from time import sleep
-    from urllib.request import urlopen, Request
+    from urllib2 import urlopen
     import config as conf
     import timer
     from restServer import rest_server
