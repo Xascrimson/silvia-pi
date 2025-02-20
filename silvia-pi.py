@@ -63,11 +63,15 @@ def pid_loop(dummy, state):
     from datetime import datetime
     from brewOrSteaming import steaming
     import RPi.GPIO as GPIO
+    from digitalio import DigitalInOut
+    import board
 
 
     def c_to_f(c):
         return c * 9.0 / 5.0 + 32.0
-
+    spi = board.SPI()
+    cs = DigitalInOut(board.D5)
+    sensor = adafruit_max31855.MAX31855(spi,cs)
     # sensor = adafruit_max31855.MAX31855(spi=SPI.SpiDev(conf.spi_port, conf.spi_dev))
     pid = PID.PID(conf.Pc, conf.Ic, conf.Dc)
     pid.SetPoint = state['settemp']
@@ -92,7 +96,7 @@ def pid_loop(dummy, state):
 
     try:
         while True:  # Loops 10x/second
-            tempc = 0# sensor.readTempC()
+            tempc = sensor.readTempC()
             steam,circuitBreaker,timeSinceLastSteam = steaming(timeSinceLastSteam)
             state['circuitBreaker'] = circuitBreaker
             state['steam'] = steam
