@@ -208,6 +208,8 @@ def pid_loop(dummy, state):
             i += 1
             lasttime = time()
 
+    except Exception as e:
+        print(e)
     finally:
         GPIO.cleanup()
         pid.clear
