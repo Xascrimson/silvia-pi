@@ -96,7 +96,7 @@ def pid_loop(dummy, state):
 
     try:
         while True:  # Loops 10x/second
-            tempc = 0 #sensor.temperature
+            tempc = sensor.temperature
             steam,circuitBreaker,timeSinceLastSteam = steaming(timeSinceLastSteam)
             state['circuitBreaker'] = circuitBreaker
             state['steam'] = steam
