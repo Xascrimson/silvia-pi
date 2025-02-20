@@ -57,7 +57,7 @@ def pid_loop(dummy, state):
     from time import sleep, time
     from math import isnan
     # import Adafruit_GPIO.SPI as SPI
-    # import Adafruit_MAX31855.MAX31855 as MAX31855
+    import adafruit_max31855
     import PID as PID
     import config as conf
     from datetime import datetime
@@ -68,7 +68,7 @@ def pid_loop(dummy, state):
     def c_to_f(c):
         return c * 9.0 / 5.0 + 32.0
 
-    # sensor = MAX31855.MAX31855(spi=SPI.SpiDev(conf.spi_port, conf.spi_dev))
+    # sensor = adafruit_max31855.MAX31855(spi=SPI.SpiDev(conf.spi_port, conf.spi_dev))
     pid = PID.PID(conf.Pc, conf.Ic, conf.Dc)
     pid.SetPoint = state['settemp']
     pid.setSampleTime(conf.sample_time*5)
