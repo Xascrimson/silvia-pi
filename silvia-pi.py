@@ -68,8 +68,10 @@ def pid_loop(dummy, state):
     def c_to_f(c):
         return c * 9.0 / 5.0 + 32.0
 
-    sensor = MAX31855.MAX31855(spi=SPI.SpiDev(conf.spi_port, conf.spi_dev))
-
+    try:
+        sensor = MAX31855.MAX31855(spi=SPI.SpiDev(conf.spi_port, conf.spi_dev))
+    except Exception as e: 
+        print(e)
     pid = PID.PID(conf.Pc, conf.Ic, conf.Dc)
     pid.SetPoint = state['settemp']
     pid.setSampleTime(conf.sample_time*5)
