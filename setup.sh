@@ -12,11 +12,15 @@ apt-get -y install rpi-update git build-essential python-dev python-smbus python
 echo "Installing logrotate config..."
 cp $BASEDIR/silvia-pi-logrotate /etc/logrotate.d
 
-echo "Installing Adafruit GPIO library..."
-cd ~
-git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
-cd ~/Adafruit_Python_GPIO
-python setup.py install
+### deprecated
+# echo "Installing Adafruit GPIO library..."
+# cd ~
+# git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+# cd ~/Adafruit_Python_GPIO
+# python setup.py install
+
+# installing adafruit blinka alternative to adafruit python gpio
+pip3 install Adafruit-Blinka
 
 echo "Installing MAX31855 Thermocouple Amp library..."
 cd ~
@@ -36,7 +40,7 @@ pip3 install spidev==3.4 --force-reinstall
 if ! grep silvia-pi.py /etc/rc.local; then
   echo "Adding entry to /etc/rc.local"
   cp /etc/rc.local /etc/rc.local.bak
-  cat /etc/rc.local | sed 's|^exit 0$|sudo python /root/silvia-pi/silvia-pi.py & > /root/silvia-pi/silvia-pi.log 2>\&1 \&\n\nexit 0|g' > /etc/rc.local.new
+  cat /etc/rc.local | sed 's|^exit 0$|sudo python3 /root/silvia-pi/silvia-pi.py & > /root/silvia-pi/silvia-pi.log 2>\&1 \&\n\nexit 0|g' > /etc/rc.local.new
   mv /etc/rc.local.new /etc/rc.local
   chmod 755 /etc/rc.local
 else
