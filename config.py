@@ -18,23 +18,23 @@ steam_pin = 22
 overRide = 16
 
 # Default goal temperature
-set_temp = 103
+set_temp = 101
 set_steam_temp = 150.
 # Default alarm time
 snooze = '07:00'
 
 #circuit breaker time in minutes convert to seconds
 circuitBreakerTime = 20 * 60
-TimerOnMo = '8:15'
-TimerOffMo = '9:30'
-TimerOnTu = '8:15'
-TimerOffTu = '9:30'
-TimerOnWe = '8:15'
-TimerOffWe = '9:30'
-TimerOnTh = '8:15'
-TimerOffTh = '9:30'
-TimerOnFr = '8:15'
-TimerOffFr = '9:30'
+TimerOnMo = '8:30'
+TimerOffMo = '9:45'
+TimerOnTu = '8:30'
+TimerOffTu = '9:45'
+TimerOnWe = '8:30'
+TimerOffWe = '9:45'
+TimerOnTh = '8:30'
+TimerOffTh = '9:45'
+TimerOnFr = '8:30'
+TimerOffFr = '9:45'
 TimerOnSa = '10:00'
 TimerOffSa = '14:00'
 TimerOnSu = '10:00'
