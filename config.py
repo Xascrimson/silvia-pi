@@ -18,7 +18,7 @@ steam_pin = 22
 overRide = 12
 
 # Default goal temperature
-set_temp = 101
+set_temp = 96 #101
 set_steam_temp = 150.
 # Default alarm time
 snooze = '07:00'
