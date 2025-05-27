@@ -8,7 +8,7 @@ spi_dev = 0
 
 
 # Pin # for relay connected to heating element
-he_pin = 26
+he_pin = 19
 
 brew_pin = 17
 steam_pin = 22
