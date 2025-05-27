@@ -15,7 +15,7 @@ steam_pin = 22
 
 
 #overriding the time config when wanting to heat up not during normal hours
-overRide = 15
+overRide = 12
 
 # Default goal temperature
 set_temp = 101
