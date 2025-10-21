@@ -16,8 +16,8 @@ def he_control_loop(dummy, state,timeState):
     try:
         while True:
             pidstate['awake'] = timer.timer(timeState)
-            print("current awake state",pidstate['awake'],"timer.timer(timestate): ",timer.timer(timeState), "timestate: ", timestate")
-
+            print("current awake state", pidstate['awake'], "timer.timer(timestate):", timer.timer(timeState), "timestate:", timestate)
+            
             # if state['snoozeon'] == True:
             #     now = datetime.now()
             #     dt = datetime.strptime(state['snooze'], '%H:%M')
