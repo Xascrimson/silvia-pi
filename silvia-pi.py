@@ -204,6 +204,7 @@ def pid_loop(dummy, state):
             print (datetime.now())
             print(state)
             print("time since last steam", timeSinceLastSteam)
+            print("current awake state", pidstate['awake'], "timer.timer(timestate):", timer.timer(timeState), "timestate:", timeState)
 
             sleeptime = lasttime+conf.sample_time-time()
             if sleeptime < 0:
