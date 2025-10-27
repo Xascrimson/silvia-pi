@@ -15,7 +15,7 @@ def he_control_loop(dummy, state,timeState):
 
     try:
         while True:
-            pidstate['awake_2'] = timer.timer(timeState)
+            pidstate['awake'] = timer.timer(timeState)
             
             # if state['snoozeon'] == True:
             #     now = datetime.now()
@@ -25,7 +25,7 @@ def he_control_loop(dummy, state,timeState):
 
             avgpid = state['avgpid']
             
-            if not state['awake_2'] or state['circuitBreaker']:
+            if not state['awake'] or state['circuitBreaker']:
                 state['heating'] = False
                 GPIO.output(conf.he_pin, 0)
                 sleep(1)
@@ -203,7 +203,7 @@ def pid_loop(dummy, state):
             print (datetime.now())
             print(state)
             print("time since last steam", timeSinceLastSteam)
-            print("current awake state", pidstate['awake_2'], "timer.timer(timestate):", timer.timer(timeState), "timestate:", timeState)
+            print("current awake state", pidstate['awake'], "timer.timer(timestate):", timer.timer(timeState), "timestate:", timeState)
 
             sleeptime = lasttime+conf.sample_time-time()
             if sleeptime < 0:
@@ -258,9 +258,7 @@ if __name__ == '__main__':
     timeState['TimerOffSu'] = conf.TimerOffSu
 
     # timeState['overRide'] = conf.overRide
-
-    pidstate['awake'] = timer.timer(timeState)
-
+    
     p = Process(target=pid_loop, args=(1, pidstate))
     p.daemon = True
     p.start()
