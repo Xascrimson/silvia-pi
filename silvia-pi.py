@@ -213,6 +213,7 @@ def pid_loop(dummy, state):
             lasttime = time()
 
     except Exception as e:
+        print("line 216, ERROR in try")
         print(e)
     finally:
         GPIO.cleanup()
