@@ -74,10 +74,15 @@ def rest_server(dummy, state,timeState):
         state['snoozeon'] = True
         state['snooze'] = snooze
         return str(snooze)
-
+    
     @post('/resetsnooze')
     def reset_snooze():
         state['snoozeon'] = False
+        return True
+
+    @post('/wakeup')
+    def wakeup():
+        state['wakeup'] = True
         return True
 
     @get('/allstats')

@@ -99,6 +99,10 @@ $(document).ready(function () {
 		$.post("/setsteamtemp", { steamtemp: $("#inputSetSteamTemp").val() });
 	});
 
+	$("#btnWakeup").click(function () {
+		$.post("/wakeup");
+	});
+
 	$("#btnSnooze").click(function () {
 		$.post("/snooze", { snooze: $("#inputSnooze").val() });
 		$("#btnSnooze").hide();

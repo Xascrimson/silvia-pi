@@ -25,7 +25,7 @@ def he_control_loop(dummy, state,timeState):
 
             avgpid = state['avgpid']
             
-            if not state['awake'] or state['circuitBreaker']:
+            if not state['awake'] or state['circuitBreaker'] or state['wakeup']:
                 state['heating'] = False
                 GPIO.output(conf.he_pin, 0)
                 sleep(1)
@@ -99,7 +99,7 @@ def pid_loop(dummy, state):
                 tempc = sensor.temperature
             except:
                 continue
-            steam,circuitBreaker,timeSinceLastSteam = steaming(timeSinceLastSteam)
+            steam,circuitBreaker,timeSinceLastSteam = steaming(timeSinceLastSteam,state)
             state['circuitBreaker'] = circuitBreaker
             state['steam'] = steam
             if isnan(tempc):
@@ -241,6 +241,7 @@ if __name__ == '__main__':
     pidstate['circuitBreaker'] = None
     pidstate['steam'] = False
     pidstate['avgpid'] = 0.
+    pidstate['wakeup'] = False
 
     timeState = manager.dict()    
     timeState['TimerOnMo'] = conf.TimerOnMo
