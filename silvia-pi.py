@@ -16,16 +16,13 @@ def he_control_loop(dummy, state,timeState):
     try:
         while True:
             pidstate['awake'] = timer.timer(timeState)
-            
-            # if state['snoozeon'] == True:
-            #     now = datetime.now()
-            #     dt = datetime.strptime(state['snooze'], '%H:%M')
-            #     if dt.hour == now.hour and dt.minute == now.minute:
-            #         state['snoozeon'] = False
+            # if i've been rested before, then I can rest 
+            if pidstate['awake'] == False:
+                state['shouldSkip'] = False
 
             avgpid = state['avgpid']
             
-            if (not state['awake'] and not state['wakeup']) or state['circuitBreaker']:
+            if (pidstate['awake'] == True and state['shouldSkip'] == True ) or (not state['awake'] and not state['wakeup']) or state['circuitBreaker']:
                 state['heating'] = False
                 GPIO.output(conf.he_pin, 0)
                 sleep(1)
@@ -242,7 +239,7 @@ if __name__ == '__main__':
     pidstate['steam'] = False
     pidstate['avgpid'] = 0.
     pidstate['wakeup'] = False
-
+    pidstate['shouldSkip'] = False
     timeState = manager.dict()    
     timeState['TimerOnMo'] = conf.TimerOnMo
     timeState['TimerOffMo'] = conf.TimerOffMo
