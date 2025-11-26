@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+def reset(state):
+    state['shouldSkip'] = False
+
+
 def he_control_loop(dummy, state,timeState):
     from time import sleep
     from datetime import datetime, timedelta
@@ -18,11 +22,11 @@ def he_control_loop(dummy, state,timeState):
             pidstate['awake'] = timer.timer(timeState)
             # if i've been rested before, then I can rest 
             if pidstate['awake'] == False:
-                state['shouldSkip'] = False
+                reset(state)
 
             avgpid = state['avgpid']
             
-            if (pidstate['awake'] == True and state['shouldSkip'] == True ) or (not state['awake'] and not state['wakeup']) or state['circuitBreaker']:
+            if state['shouldSkip'] or (not pidstate['awake'] and not state['wakeup']) or state['circuitBreaker']:
                 state['heating'] = False
                 GPIO.output(conf.he_pin, 0)
                 sleep(1)
