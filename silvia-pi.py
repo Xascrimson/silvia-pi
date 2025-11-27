@@ -22,6 +22,7 @@ def he_control_loop(dummy, state,timeState):
             pidstate['awake'] = timer.timer(timeState)
             # if i've been rested before, then I can rest 
             if pidstate['awake'] == False:
+                print(f'resetting he control loop shouldSkip: {state["shouldSkip"]}, pidAwake: {pidstate["awake"]},time: {datetime.now()}')
                 reset(state)
 
             avgpid = state['avgpid']

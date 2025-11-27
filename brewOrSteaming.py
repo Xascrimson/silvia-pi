@@ -29,5 +29,7 @@ def steaming(timeSinceLastSteaming,state):
         #if wakeup is true, and we last steamed then now you can set it as false
         if state['wakeup'] == True and timeSinceLastSteaming != None:
             state['wakeup'] = False
+        if timeSinceLastSteaming != None:
+            state['shouldSkip'] = True
         return False,False,None
     
