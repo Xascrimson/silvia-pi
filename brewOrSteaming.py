@@ -20,7 +20,7 @@ def steaming(timeSinceLastSteaming,state):
             timeSinceLastSteaming = time()
         
         #steam working fine
-        if time() - timeSinceLastSteaming < conf.circuitBreakerTime:
+        if isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
             return True,False,timeSinceLastSteaming
         #circuit protection
         return False, True, timeSinceLastSteaming
@@ -29,7 +29,11 @@ def steaming(timeSinceLastSteaming,state):
         #if wakeup is true, and we last steamed then now you can set it as false
         if state['wakeup'] == True and timeSinceLastSteaming != None:
             state['wakeup'] = False
-        if timeSinceLastSteaming != None:
+        if isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
             state['shouldSkip'] = True
         return False,False,None
     
+def isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
+    if timeSinceLastSteaming == None:
+        return False
+    return time() - timeSinceLastSteaming < conf.circuitBreakerTime
