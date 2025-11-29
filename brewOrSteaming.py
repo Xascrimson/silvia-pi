@@ -29,11 +29,14 @@ def steaming(timeSinceLastSteaming,state):
         #if wakeup is true, and we last steamed then now you can set it as false
         if state['wakeup'] == True and timeSinceLastSteaming != None:
             state['wakeup'] = False
-        if isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
+        if hasReachedWarmStateAlready(state):
             state['shouldSkip'] = True
         return False,False,None
     
 def isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
     if timeSinceLastSteaming == None:
-        return False
+        return True
     return time() - timeSinceLastSteaming < conf.circuitBreakerTime
+
+def hasReachedWarmStateAlready(state):
+    return state['lastWarm'] != None
