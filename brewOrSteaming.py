@@ -39,4 +39,4 @@ def isTimeSinceLastSteamWithinBound(timeSinceLastSteaming):
     return time() - timeSinceLastSteaming < conf.circuitBreakerTime
 
 def hasReachedWarmStateAlready(state):
-    return state['lastWarm'] != None
+    return 'lastWarm' in state
