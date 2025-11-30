@@ -2,7 +2,7 @@
 
 def reset(state):
     state['shouldSkip'] = False
-    state['lastWarm'] = None
+    state['lastWarm'] = False
 
 
 def he_control_loop(dummy, state,timeState):
@@ -134,8 +134,8 @@ def pid_loop(dummy, state):
 
                 if avgtemp > 130:
                     lastwarm = i
-                    if state['lastWarm'] is None:
-                        state['lastWarm'] = time()
+                    if state['lastWarm'] is False:
+                        state['lastWarm'] = True
 
                 if iscold and (i-lastcold)*conf.sample_time > 60*15:
                     pid = PID.PID(conf.Pw, conf.Iw, conf.Dw)
@@ -243,7 +243,7 @@ if __name__ == '__main__':
     pidstate['i'] = 0
     pidstate['settemp'] = conf.set_temp
     pidstate['steamtemp'] = conf.set_steam_temp
-    pidstate['lastWarm'] = None
+    pidstate['lastWarm'] = False
     pidstate['circuitBreaker'] = None
     pidstate['steam'] = False
     pidstate['avgpid'] = 0.
