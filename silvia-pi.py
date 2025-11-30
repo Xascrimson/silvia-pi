@@ -243,6 +243,7 @@ if __name__ == '__main__':
     pidstate['i'] = 0
     pidstate['settemp'] = conf.set_temp
     pidstate['steamtemp'] = conf.set_steam_temp
+    pidstate['lastWarm'] = None
     pidstate['circuitBreaker'] = None
     pidstate['steam'] = False
     pidstate['avgpid'] = 0.
