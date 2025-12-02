@@ -16,14 +16,14 @@ def he_control_loop(dummy, state,timeState):
     GPIO.setup(conf.steam_pin,GPIO.IN)
     GPIO.output(conf.he_pin, 0)
     GPIO.input(conf.steam_pin)
+    overRide = GPIO.input(conf.overRide)
     heating = False
 
     try:
         while True:
             pidstate['awake'] = timer.timer(timeState)
             # if i've been rested before, then I can rest 
-            if pidstate['awake'] == False:
-                print(f'resetting he control loop shouldSkip: {state["shouldSkip"]}, pidAwake: {pidstate["awake"]},time: {datetime.now()}')
+            if pidstate['awake'] == False or overRide == True:
                 reset(state)
 
             avgpid = state['avgpid']
