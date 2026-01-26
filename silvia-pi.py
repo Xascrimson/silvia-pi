@@ -4,9 +4,18 @@ def reset(state):
     state['shouldSkip'] = False
     state['lastWarm'] = False
 
+def hasOverRideFor5Seconds(override,time,state):
+    if override == True:
+        if state.get('overrideStartTime',None) is None:
+            state['overrideStartTime'] = time
+        if (time - state.get('overrideStartTime',time)) >= 5:
+            return True
+    else:
+        state['overrideStartTime'] = None
+    return False
 
 def he_control_loop(dummy, state,timeState):
-    from time import sleep
+    from time import sleep, time
     from datetime import datetime, timedelta
     import RPi.GPIO as GPIO
     import config as conf
@@ -24,7 +33,7 @@ def he_control_loop(dummy, state,timeState):
         while True:
             pidstate['awake'] = timer.timer(timeState)
             # if i've been rested before, then I can rest 
-            if pidstate['awake'] == False or overRide == True:
+            if pidstate['awake'] == False or hasOverRideFor5Seconds(overRide,time(),state):
                 reset(state)
 
             avgpid = state['avgpid']
