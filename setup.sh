@@ -49,7 +49,7 @@ uv sync --python-preference=only-system
 if ! grep silvia-pi.py /etc/rc.local; then
   echo "Adding entry to /etc/rc.local"
   cp /etc/rc.local /etc/rc.local.bak
-  cat /etc/rc.local | sed 's|^exit 0$|cd /root/silvia-pi\\n/root/.local/bin/uv run start > /root/silvia-pi/silvia-pi.log 2>\\&1 \\&\\n\\nexit 0|g' > /etc/rc.local.new
+  cat /etc/rc.local | sed 's|^exit 0$|cd /root/silvia-pi\nif [ -x /root/.local/bin/uv ]; then\n  /root/.local/bin/uv run -- python silvia-pi.py > /root/silvia-pi/silvia-pi.log 2>\\&1 \\&\nelse\n  python3 /root/silvia-pi/silvia-pi.py > /root/silvia-pi/silvia-pi.log 2>\\&1 \\&\nfi\n\nexit 0|g' > /etc/rc.local.new
   mv /etc/rc.local.new /etc/rc.local
   chmod 755 /etc/rc.local
 else

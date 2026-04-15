@@ -16,6 +16,3 @@ dependencies = [
   "adafruit-circuitpython-max31855",
   "spidev==3.4",
 ]
-
-[tool.uv.scripts]
-start = "python silvia-pi.py"
