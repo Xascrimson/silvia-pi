@@ -1,0 +1,18 @@
+[project]
+name = "silvia-pi"
+version = "0.1.0"
+description = "Raspberry Pi PID temperature control for Rancilio Silvia with REST and web UI"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+  { name = "silvia-pi maintainers" }
+]
+
+dependencies = [
+  "bottle",
+  "cheroot",
+  "RPi.GPIO",
+  "Adafruit-Blinka",
+  "adafruit-circuitpython-max31855",
+  "spidev==3.4",
+]
