@@ -17,8 +17,5 @@ dependencies = [
   "spidev==3.4",
 ]
 
-[tool.uv]
-venv = ".venv"
-
 [tool.uv.scripts]
 start = "python silvia-pi.py"
