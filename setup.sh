@@ -37,10 +37,19 @@ echo "Installing remaining python libraries..."
 pip install --upgrade -r $BASEDIR/requirements.txt
 pip3 install spidev==3.4 --force-reinstall
 
+echo "Installing uv (Python package/deps manager)..."
+# Install uv for the current user (root in this script)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+
+# Sync project dependencies into a local .venv using system Python
+cd "$BASEDIR"
+uv sync --python-preference=only-system
+
 if ! grep silvia-pi.py /etc/rc.local; then
   echo "Adding entry to /etc/rc.local"
   cp /etc/rc.local /etc/rc.local.bak
-  cat /etc/rc.local | sed 's|^exit 0$|sudo python3 /root/silvia-pi/silvia-pi.py & > /root/silvia-pi/silvia-pi.log 2>\&1 \&\n\nexit 0|g' > /etc/rc.local.new
+  cat /etc/rc.local | sed 's|^exit 0$|cd /root/silvia-pi\\n/root/.local/bin/uv run start > /root/silvia-pi/silvia-pi.log 2>\\&1 \\&\\n\\nexit 0|g' > /etc/rc.local.new
   mv /etc/rc.local.new /etc/rc.local
   chmod 755 /etc/rc.local
 else
