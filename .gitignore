@@ -4,6 +4,3 @@ PID.*
 kill.sh
 restart.sh
 *.debug.js
-
-# uv / venv
-.venv/
